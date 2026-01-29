@@ -35,8 +35,8 @@ public class MoniRecipeModifiers {
             var stored = tanks.get(0).getFluidInTank(0).getAmount();
             var capacity = tanks.get(0).getTankCapacity(0);
             double x = (double) stored / capacity;
-            double expMod = Math.log(MoniConfig.INSTANCE.values.sculkVatEfficiencyMultiplier) * 2.0;
-            double modifier = Math.pow(1.0 / Math.exp(expMod * Math.pow((x - 0.5), 2.0)), 2.0);
+            double effMult = MoniConfig.INSTANCE.values.sculkVatEfficiencyMultiplier;
+            double modifier = Math.pow(effMult, - 4.0 * Math.pow((x - 0.5));
             return ModifierFunction.builder()
                     .outputModifier(new ContentModifier(modifier, 0.0))
                     .build();
